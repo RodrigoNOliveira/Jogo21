@@ -44,22 +44,22 @@ public class Cartas {
 
         if ((naipe.equals("copas") || naipe.equals("ouros")) && valor == 10) {
             return "\n----------\n" + "| " + simbolo + "     |\n" + "|        |\n" + "|        |\n" + "| " + naipe
-                    + "  |\n" + "|        |\n" + "|        |\n" + "|     " + simbolo + " |\n" + "----------\n";
+                    + "  |\n" + "|        |\n" + "|        |\n" + "|     " + simbolo + " |\n" + "----------\n\n\n" + "valor: " + valor;
         } else if ((naipe.equals("paus")) && valor == 10) {
             return "\n----------\n" + "| " + simbolo + "     |\n" + "|        |\n" + "|        |\n" + "|  " + naipe
-                    + "  |\n" + "|        |\n" + "|        |\n" + "|     " + simbolo + " |\n" + "----------\n";
+                    + "  |\n" + "|        |\n" + "|        |\n" + "|     " + simbolo + " |\n" + "----------\n\n\n" + "valor: " + valor;
         } else if ((naipe.equals("espadas")) && valor == 10) {
             return "\n----------\n" + "| " + simbolo + "     |\n" + "|        |\n" + "|        |\n" + "| " + naipe
-                    + "|\n" + "|        |\n" + "|        |\n" + "|     " + simbolo + " |\n" + "----------\n";
+                    + "|\n" + "|        |\n" + "|        |\n" + "|     " + simbolo + " |\n" + "----------\n\n\n" + "valor: " + valor;
         } else if ((naipe.equals("espadas"))) {
             return "\n----------\n" + "| " + simbolo + "      |\n" + "|        |\n" + "|        |\n" + "| " + naipe
-                    + "|\n" + "|        |\n" + "|        |\n" + "|      " + simbolo + " |\n" + "----------\n";
+                    + "|\n" + "|        |\n" + "|        |\n" + "|      " + simbolo + " |\n" + "----------\n\n\n" + "valor: " + valor;
         } else if (naipe.equals("copas") || naipe.equals("ouros")) {
             return "\n----------\n" + "| " + simbolo + "      |\n" + "|        |\n" + "|        |\n" + "| " + naipe
-                    + "  |\n" + "|        |\n" + "|        |\n" + "|      " + simbolo + " |\n" + "----------\n";
+                    + "  |\n" + "|        |\n" + "|        |\n" + "|      " + simbolo + " |\n" + "----------\n\n\n" + "valor: " + valor;
         } else {
             return "\n----------\n" + "| " + simbolo + "      |\n" + "|        |\n" + "|        |\n" + "|  " + naipe
-                    + "  |\n" + "|        |\n" + "|        |\n" + "|      " + simbolo + " |\n" + "----------\n";
+                    + "  |\n" + "|        |\n" + "|        |\n" + "|      " + simbolo + " |\n" + "----------\n\n\n" + "valor: " + valor;
         }
     }
 

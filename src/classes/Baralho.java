@@ -34,10 +34,21 @@ public class Baralho {
             }
 
         }
+        cartasBaralho();
     }
 
+
+    public void cartasBaralho(){
+        for (int i = 0; i < listaCartas.size(); i++) {
+            if(listaCartas.get(i).getValor() > 10){
+                listaCartas.get(i).setValor(10);
+            }
+        }
+    }
+
+
     public String verificaSimbolo(int i) {
-        if (i == 0 || i == 13 || i == 26 || i == 39) {
+        if (i == 0 || i == 13 || i == 26 || i == 39) {       
                 return "A";
             } else if (i == 10 || i == 23 || i == 36 || i == 49) {
                 return "Q";
@@ -57,20 +68,24 @@ public class Baralho {
     }
 
 
-    public void tiraCartas() {
+    public Cartas tiraCartas() {
         Random gerador = new Random();
         int z = 0;
         do {
-            z = gerador.nextInt(53);
+            z = gerador.nextInt(listaCartas.size());
             if (listaCartas.get(z) != null) {
-                System.out.println(listaCartas.get(z));
+                Cartas g = listaCartas.get(z);
                 listaCartas.remove(z);
+                return g;
+                
             }
         } while (listaCartas.get(z) == null);
+        return null;
+        
     }
 
     public void tamanho() {
-        System.out.println(listaCartas.size());
+        System.out.println("Tamanho: " + listaCartas.size());
     }
 
     @Override
