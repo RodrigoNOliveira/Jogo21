@@ -25,17 +25,21 @@ public class Computador extends Jogador {
     @Override
     public int Escolha() {
         do {
-            System.out.println("Opções");
-            System.out.println("1- Comprar Carta");
-            System.out.println("2- Não comprar carta");
-            System.out.println();
+            System.out.println("--------------------");
+            System.out.println("|                  |");
+            System.out.println("|      Opções      |");
+            System.out.println("|                  |");
+            System.out.println("| 1- Comprar carta |");
+            System.out.println("|                  |");
+            System.out.println("| 2- Não comprar   |");
+            System.out.println("|                  |");
+            System.out.println("--------------------");
 
-            if(valorJogador()<=10){
+            if (valorJogador() <= 10) {
                 escolha = 1;
+            } else {
+                escolha = gerador.nextInt(2) + 1;
             }
-            else{
-            escolha = gerador.nextInt(2) + 1;
-        }
             System.out.println("Opção selecionada pela maquina: " + escolha);
             return escolha;
         } while (escolha != 1 || escolha != 2);

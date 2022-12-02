@@ -42,24 +42,24 @@ public class Cartas {
     @Override
     public String toString() {
 
-        if ((naipe.equals("copas") || naipe.equals("ouros")) && valor == 10) {
+        if ((naipe.equals("copas") || naipe.equals("ouros")) && simbolo.equals("10")) {
             return "\n----------\n" + "| " + simbolo + "     |\n" + "|        |\n" + "|        |\n" + "| " + naipe
-                    + "  |\n" + "|        |\n" + "|        |\n" + "|     " + simbolo + " |\n" + "----------\n\n\n" + "valor: " + valor;
-        } else if ((naipe.equals("paus")) && valor == 10) {
+                    + "  |\n" + "|        |\n" + "|        |\n" + "|     " + simbolo + " |\n" + "----------\n\n\n";
+        } else if ((naipe.equals("paus")) && simbolo.equals("10")) {
             return "\n----------\n" + "| " + simbolo + "     |\n" + "|        |\n" + "|        |\n" + "|  " + naipe
-                    + "  |\n" + "|        |\n" + "|        |\n" + "|     " + simbolo + " |\n" + "----------\n\n\n" + "valor: " + valor;
-        } else if ((naipe.equals("espadas")) && valor == 10) {
+                    + "  |\n" + "|        |\n" + "|        |\n" + "|     " + simbolo + " |\n" + "----------\n\n\n";
+        } else if ((naipe.equals("espadas")) && simbolo.equals("10")) {
             return "\n----------\n" + "| " + simbolo + "     |\n" + "|        |\n" + "|        |\n" + "| " + naipe
-                    + "|\n" + "|        |\n" + "|        |\n" + "|     " + simbolo + " |\n" + "----------\n\n\n" + "valor: " + valor;
+                    + "|\n" + "|        |\n" + "|        |\n" + "|     " + simbolo + " |\n" + "----------\n\n\n";
         } else if ((naipe.equals("espadas"))) {
             return "\n----------\n" + "| " + simbolo + "      |\n" + "|        |\n" + "|        |\n" + "| " + naipe
-                    + "|\n" + "|        |\n" + "|        |\n" + "|      " + simbolo + " |\n" + "----------\n\n\n" + "valor: " + valor;
+                    + "|\n" + "|        |\n" + "|        |\n" + "|      " + simbolo + " |\n" + "----------\n\n\n";
         } else if (naipe.equals("copas") || naipe.equals("ouros")) {
             return "\n----------\n" + "| " + simbolo + "      |\n" + "|        |\n" + "|        |\n" + "| " + naipe
-                    + "  |\n" + "|        |\n" + "|        |\n" + "|      " + simbolo + " |\n" + "----------\n\n\n" + "valor: " + valor;
+                    + "  |\n" + "|        |\n" + "|        |\n" + "|      " + simbolo + " |\n" + "----------\n\n\n";
         } else {
             return "\n----------\n" + "| " + simbolo + "      |\n" + "|        |\n" + "|        |\n" + "|  " + naipe
-                    + "  |\n" + "|        |\n" + "|        |\n" + "|      " + simbolo + " |\n" + "----------\n\n\n" + "valor: " + valor;
+                    + "  |\n" + "|        |\n" + "|        |\n" + "|      " + simbolo + " |\n" + "----------\n\n\n";
         }
     }
 

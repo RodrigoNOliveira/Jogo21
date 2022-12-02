@@ -23,8 +23,16 @@ public class Jogo {
     }
 
     public void iniciar() {
+        System.out.println();
+        System.out.println();
+        System.out.println("+------------------+");
+        System.out.println("|      JOGO 21     |");
+        System.out.println("+------------------+");
+        System.out.println();
+
         baralho.criaCartas();
-        baralho.tamanho();
+        // baralho.tamanho();
+        // System.out.println(baralho);
         defineModo();
         for (int i = 0; i < listaJogador.size(); i++) {
             for (int e = 0; e < 2; e++) {
@@ -32,18 +40,25 @@ public class Jogo {
                 listaJogador.get(i).getListaCartas().add(c);
             }
         }
-        System.out.println();
-        System.out.println();
-        System.out.println("+-----------+");
-        System.out.println("|  JOGO 21  |");
-        System.out.println("+-----------+");
+        // System.out.println();
+        // System.out.println();
+        // System.out.println("+-----------+");
+        // System.out.println("| JOGO 21 |");
+        // System.out.println("+-----------+");
         while (jogar())
             ;
     }
 
     public void cadastroMultiplayer() {
         System.out.println();
-        System.out.print("Modo multiplayer - 2 jogadores");
+        System.out.println();
+        System.out.println("--------------------");
+        System.out.println("|                  |");
+        System.out.println("|    Multiplayer   |");
+        System.out.println("|                  |");
+        System.out.println("|    Iniciando     |");
+        System.out.println("|                  |");
+        System.out.println("--------------------");
         for (int i = 0; i < 2; i++) {
             humano = new Humano(i + 1);
             this.listaJogador.add(humano);
@@ -58,54 +73,41 @@ public class Jogo {
     }
 
     public void defineModo() {
-        int opcao;
-        boolean verifica = true;
+        int opcao = 0;
+        boolean verificaOpt = true, verificaErro;
+
         System.out.println("--------------------");
-        System.out.println("\nModos de jogo:");
-        System.out.println("1- Multiplayer \n2- Versus I.A\n");
-        System.out.print("Insira o modo desejado: ");
+        System.out.println("|                  |");
+        System.out.println("| Modos de jogo:   |");
+        System.out.println("|                  |");
+        System.out.println("| 1- Multiplayer   |");
+        System.out.println("|                  |");
+        System.out.println("| 2- Versus I.A    |");
+        System.out.println("|                  |");
+        System.out.println("--------------------");
+        System.out.print("Modo desejado: ");
         do {
-            try {
-                opcao = scanner.nextInt();
-                if (opcao == 1) {
-                    cadastroMultiplayer();
-                } else {
-                    cadastroIA();
+            do {
+                try {
+                    opcao = scanner.nextInt();
+                    if (opcao == 1) {
+                        cadastroMultiplayer();
+                    } else if (opcao == 2) {
+                        cadastroIA();
+                    } else {
+                        System.out.print("\nOpção inválida! Digite um dos valores apresentados na tela: ");
+                        verificaOpt = false;
+                    }
+                    verificaErro = true;
+                } catch (InputMismatchException e) {
+                    System.out.print("\nOpção inválida! Digite um dos valores apresentados na tela: ");
+                    scanner.nextLine();
+                    verificaErro = false;
                 }
-            } catch (InputMismatchException e) {
-                System.out.print("\nOpção inválida! Digite um dos valores apresentados na tela: ");
-                verifica = false;
-            }
-        } while (verifica == false);
+            } while (verificaErro == false);
+        } while (verificaOpt == false);
+
     }
-
-    // public int Escolha() {
-    // int escolha = 0;
-    // do {
-    // try {
-    // System.out.println("Opções");
-    // System.out.println("1- Comprar Carta");
-    // System.out.println("2- Não comprar carta");
-    // System.out.print("Digite a opção desejada: ");
-    // escolha = scanner.nextInt();
-    // return escolha;
-    // } catch (InputMismatchException e) {
-    // System.out.println("\nOpção invalida! Insira um dos valores apresentados na
-    // tela! ");
-    // scanner.nextLine();
-    // }
-    // } while (escolha != 1 && escolha != 2);
-    // return 0;
-    // }
-
-    // public Cartas jogada() {
-    // if (Escolha() == 1) {
-    // c = baralho.tiraCartas();
-    // System.out.println(c);
-    // return c;
-    // }
-    // return null;
-    // }
 
     public boolean jogar() {
         jogada++;
@@ -136,39 +138,81 @@ public class Jogo {
 
         }
         if (valida == false && valida1 == false) {
-            System.out.println("Ambos pararam, chegando resultado...\n\n");
+            System.out.println();
+            System.out.println("Ambos pararam, checando resultado...\n\n");
+            System.out.println();
             if (listaJogador.get(0).valorJogador() < listaJogador.get(1).valorJogador()) {
-                System.out.println("+---------------------+");
-                System.out.println("| O jogador 2 ganhou! |");
-                System.out.println("+---------------------+");
+                System.out.println("+----------------------+");
+                System.out.println("| Resultado jogador 1: |");
+                if (listaJogador.get(0).valorJogador() > 9) {
+                    System.out.println("|          " + listaJogador.get(0).valorJogador() + "          |");
+                } else {
+                    System.out.println("|          " + listaJogador.get(0).valorJogador() + "           |");
+                }
+                System.out.println("| Resultado jogador 2: |");
+                if (listaJogador.get(1).valorJogador() > 9) {
+                    System.out.println("|          " + listaJogador.get(1).valorJogador() + "          |");
+                } else {
+                    System.out.println("|          " + listaJogador.get(1).valorJogador() + "           |");
+                }
+                System.out.println("| O jogador 2 ganhou!  |");
+                System.out.println("+----------------------+");
             } else if (listaJogador.get(0).valorJogador() > listaJogador.get(1).valorJogador()) {
-                System.out.println("+---------------------+");
-                System.out.println("| O jogador 1 ganhou! |");
+                System.out.println("+----------------------+");
+                System.out.println("| Resultado jogador 1: |");
+                if (listaJogador.get(0).valorJogador() > 9) {
+                    System.out.println("|          " + listaJogador.get(0).valorJogador() + "          |");
+                } else {
+                    System.out.println("|          " + listaJogador.get(0).valorJogador() + "           |");
+                }
+                System.out.println("| Resultado jogador 2: |");
+                if (listaJogador.get(1).valorJogador() > 9) {
+                    System.out.println("|          " + listaJogador.get(1).valorJogador() + "          |");
+                } else {
+                    System.out.println("|          " + listaJogador.get(1).valorJogador() + "           |");
+                }
+                System.out.println("|  O jogador 1 ganhou! |");
                 System.out.println("+---------------------+");
             } else {
-                System.out.println("+---------------------+");
-                System.out.println("|       EMPATE        |");
-                System.out.println("+---------------------+");
+                System.out.println("+----------------------+");
+                System.out.println("| Resultado jogador 1: |");
+                if (listaJogador.get(0).valorJogador() > 9) {
+                    System.out.println("|          " + listaJogador.get(0).valorJogador() + "          |");
+                } else {
+                    System.out.println("|          " + listaJogador.get(0).valorJogador() + "           |");
+                }
+                System.out.println("| Resultado jogador 2: |");
+                if (listaJogador.get(1).valorJogador() > 9) {
+                    System.out.println("|          " + listaJogador.get(1).valorJogador() + "          |");
+                } else {
+                    System.out.println("|          " + listaJogador.get(1).valorJogador() + "           |");
+                }
+                System.out.println("|        EMPATE        |");
+                System.out.println("+----------------------+");
             }
             return false;
         } else if (estourou(listaJogador.get(0).valorJogador()) == true) {
             System.out.println("+---------------------+");
+            System.out.println("|  Jogador 1 estourou |");
             System.out.println("| O jogador 2 ganhou! |");
             System.out.println("+---------------------+");
             return false;
         } else if (estourou(listaJogador.get(1).valorJogador()) == true) {
             System.out.println("+---------------------+");
+            System.out.println("|  Jogador 2 estourou |");
             System.out.println("| O jogador 1 ganhou! |");
             System.out.println("+---------------------+");
             return false;
         } else if (ganhou(listaJogador.get(0).valorJogador())) {
             System.out.println("+---------------------+");
-            System.out.println("| O jogador 1 ganhou! |");
+            System.out.println("| O jogador 1 ganhou  |");
+            System.out.println("| completou a soma 21 |");
             System.out.println("+---------------------+");
             return false;
         } else if (ganhou(listaJogador.get(1).valorJogador())) {
             System.out.println("+---------------------+");
-            System.out.println("| O jogador 2 ganhou! |");
+            System.out.println("| O jogador 2 ganhou  |");
+            System.out.println("| completou a soma 21 |");
             System.out.println("+---------------------+");
             return false;
         }

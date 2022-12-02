@@ -33,9 +33,16 @@ public class Humano extends Jogador {
         int escolha = 0;
         do {
             try {
-                System.out.println("Opções");
-                System.out.println("1- Comprar Carta");
-                System.out.println("2- Não comprar carta");
+
+                System.out.println("--------------------");
+                System.out.println("|                  |");
+                System.out.println("|      Opções      |");
+                System.out.println("|                  |");
+                System.out.println("| 1- Comprar carta |");
+                System.out.println("|                  |");
+                System.out.println("| 2- Não comprar   |");
+                System.out.println("|                  |");
+                System.out.println("--------------------");
                 System.out.print("Digite a opção desejada: ");
                 escolha = scanner.nextInt();
                 return escolha;

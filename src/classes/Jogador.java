@@ -54,7 +54,7 @@ public abstract class Jogador {
 
     @Override
     public String toString() {
-        return "Jogador [jogador=" + jogador + ", valor=" + valorJogador() + ", listaCartas=" + listaCartas + "]";
+        return "" + listaCartas;
     }
 
     
