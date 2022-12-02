@@ -1,6 +1,5 @@
 package classes;
 
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -8,15 +7,20 @@ public class Humano extends Jogador {
     private Scanner scanner = new Scanner(System.in);
     private Cartas c;
 
+    @Override
+    public void msg() {
+        super.msg();
+    }
+
+    @Override
+    public int valorJogador() {
+        return super.valorJogador();
+    }
+
     public Humano(int jogador) {
         super(jogador);
         System.out.println("\nJogador " + jogador + " iniciado");
     }
-
-    
-
-
-
 
     @Override
     public Cartas jogar(Baralho b1) {
@@ -31,29 +35,26 @@ public class Humano extends Jogador {
     @Override
     public int Escolha() {
         int escolha = 0;
+        boolean verifica = true;
         do {
             try {
-
-                System.out.println("--------------------");
-                System.out.println("|                  |");
-                System.out.println("|      Opções      |");
-                System.out.println("|                  |");
-                System.out.println("| 1- Comprar carta |");
-                System.out.println("|                  |");
-                System.out.println("| 2- Não comprar   |");
-                System.out.println("|                  |");
-                System.out.println("--------------------");
+                msg();
                 System.out.print("Digite a opção desejada: ");
                 escolha = scanner.nextInt();
-                return escolha;
+                if (escolha == 1 || escolha == 2) {
+                    return escolha;
+                } else {
+                    System.out.println("\nOpção invalida! Insira um dos valores apresentados na tela: ");
+                    verifica = false;
+                }
+
             } catch (InputMismatchException e) {
-                System.out.println("\nOpção invalida! Insira um dos valores apresentados na tela! ");
+                System.out.println("\nOpção invalida! Insira um dos valores apresentados na tela: ");
                 scanner.nextLine();
+                verifica = false;
             }
-        } while (escolha != 1 && escolha != 2);
+        } while (verifica == false);
         return 0;
     }
-
-
 
 }

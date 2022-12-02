@@ -31,8 +31,6 @@ public class Jogo {
         System.out.println();
 
         baralho.criaCartas();
-        // baralho.tamanho();
-        // System.out.println(baralho);
         defineModo();
         for (int i = 0; i < listaJogador.size(); i++) {
             for (int e = 0; e < 2; e++) {
@@ -40,11 +38,6 @@ public class Jogo {
                 listaJogador.get(i).getListaCartas().add(c);
             }
         }
-        // System.out.println();
-        // System.out.println();
-        // System.out.println("+-----------+");
-        // System.out.println("| JOGO 21 |");
-        // System.out.println("+-----------+");
         while (jogar())
             ;
     }
@@ -74,8 +67,7 @@ public class Jogo {
 
     public void defineModo() {
         int opcao = 0;
-        boolean verificaOpt = true, verificaErro;
-
+        boolean verifica = true;
         System.out.println("--------------------");
         System.out.println("|                  |");
         System.out.println("| Modos de jogo:   |");
@@ -87,25 +79,23 @@ public class Jogo {
         System.out.println("--------------------");
         System.out.print("Modo desejado: ");
         do {
-            do {
-                try {
-                    opcao = scanner.nextInt();
-                    if (opcao == 1) {
-                        cadastroMultiplayer();
-                    } else if (opcao == 2) {
-                        cadastroIA();
-                    } else {
-                        System.out.print("\nOpção inválida! Digite um dos valores apresentados na tela: ");
-                        verificaOpt = false;
-                    }
-                    verificaErro = true;
-                } catch (InputMismatchException e) {
+            verifica = true;
+            try {
+                opcao = scanner.nextInt();
+                if (opcao == 1) {
+                    cadastroMultiplayer();
+                } else if (opcao == 2) {
+                    cadastroIA();
+                } else {
                     System.out.print("\nOpção inválida! Digite um dos valores apresentados na tela: ");
-                    scanner.nextLine();
-                    verificaErro = false;
+                    verifica = false;
                 }
-            } while (verificaErro == false);
-        } while (verificaOpt == false);
+            } catch (InputMismatchException e) {
+                System.out.print("\nOpção inválida! Digite um dos valores apresentados na tela: ");
+                scanner.nextLine();
+                verifica = false;
+            }
+        } while (verifica == false);
 
     }
 
@@ -121,7 +111,6 @@ public class Jogo {
             if (c != null) {
                 listaJogador.get(0).getListaCartas().add(c);
                 valida = true;
-                baralho.tamanho();
             } else {
                 valida = false;
             }
@@ -131,7 +120,6 @@ public class Jogo {
             if (c1 != null) {
                 listaJogador.get(1).getListaCartas().add(c1);
                 valida1 = true;
-                baralho.tamanho();
             } else {
                 valida1 = false;
             }
@@ -144,64 +132,42 @@ public class Jogo {
             if (listaJogador.get(0).valorJogador() < listaJogador.get(1).valorJogador()) {
                 System.out.println("+----------------------+");
                 System.out.println("| Resultado jogador 1: |");
-                if (listaJogador.get(0).valorJogador() > 9) {
-                    System.out.println("|          " + listaJogador.get(0).valorJogador() + "          |");
-                } else {
-                    System.out.println("|          " + listaJogador.get(0).valorJogador() + "           |");
-                }
+                parteMsgResultJgd(0);
                 System.out.println("| Resultado jogador 2: |");
-                if (listaJogador.get(1).valorJogador() > 9) {
-                    System.out.println("|          " + listaJogador.get(1).valorJogador() + "          |");
-                } else {
-                    System.out.println("|          " + listaJogador.get(1).valorJogador() + "           |");
-                }
+                parteMsgResultJgd(1);
                 System.out.println("| O jogador 2 ganhou!  |");
                 System.out.println("+----------------------+");
             } else if (listaJogador.get(0).valorJogador() > listaJogador.get(1).valorJogador()) {
                 System.out.println("+----------------------+");
                 System.out.println("| Resultado jogador 1: |");
-                if (listaJogador.get(0).valorJogador() > 9) {
-                    System.out.println("|          " + listaJogador.get(0).valorJogador() + "          |");
-                } else {
-                    System.out.println("|          " + listaJogador.get(0).valorJogador() + "           |");
-                }
+                parteMsgResultJgd(0);
                 System.out.println("| Resultado jogador 2: |");
-                if (listaJogador.get(1).valorJogador() > 9) {
-                    System.out.println("|          " + listaJogador.get(1).valorJogador() + "          |");
-                } else {
-                    System.out.println("|          " + listaJogador.get(1).valorJogador() + "           |");
-                }
+                parteMsgResultJgd(1);
                 System.out.println("|  O jogador 1 ganhou! |");
-                System.out.println("+---------------------+");
+                System.out.println("+----------------------+");
             } else {
                 System.out.println("+----------------------+");
                 System.out.println("| Resultado jogador 1: |");
-                if (listaJogador.get(0).valorJogador() > 9) {
-                    System.out.println("|          " + listaJogador.get(0).valorJogador() + "          |");
-                } else {
-                    System.out.println("|          " + listaJogador.get(0).valorJogador() + "           |");
-                }
+                parteMsgResultJgd(0);
                 System.out.println("| Resultado jogador 2: |");
-                if (listaJogador.get(1).valorJogador() > 9) {
-                    System.out.println("|          " + listaJogador.get(1).valorJogador() + "          |");
-                } else {
-                    System.out.println("|          " + listaJogador.get(1).valorJogador() + "           |");
-                }
+                parteMsgResultJgd(1);
                 System.out.println("|        EMPATE        |");
                 System.out.println("+----------------------+");
             }
             return false;
         } else if (estourou(listaJogador.get(0).valorJogador()) == true) {
-            System.out.println("+---------------------+");
-            System.out.println("|  Jogador 1 estourou |");
-            System.out.println("| O jogador 2 ganhou! |");
-            System.out.println("+---------------------+");
+            System.out.println("+----------------------+");
+            System.out.println("|  Jogador 1 estourou  |");
+            parteMsgResultJgd(0);
+            System.out.println("| O jogador 2 ganhou!  |");
+            System.out.println("+----------------------+");
             return false;
         } else if (estourou(listaJogador.get(1).valorJogador()) == true) {
-            System.out.println("+---------------------+");
-            System.out.println("|  Jogador 2 estourou |");
-            System.out.println("| O jogador 1 ganhou! |");
-            System.out.println("+---------------------+");
+            System.out.println("+----------------------+");
+            System.out.println("|  Jogador 2 estourou  |");
+            parteMsgResultJgd(1);
+            System.out.println("| O jogador 1 ganhou!  |");
+            System.out.println("+----------------------+");
             return false;
         } else if (ganhou(listaJogador.get(0).valorJogador())) {
             System.out.println("+---------------------+");
@@ -219,6 +185,14 @@ public class Jogo {
 
         return true;
 
+    }
+
+    public void parteMsgResultJgd(int i){
+        if (listaJogador.get(i).valorJogador() >= 10) {
+            System.out.println("|    Soma: " + listaJogador.get(i).valorJogador() + "          |");
+        } else {
+            System.out.println("|    Soma:  " + listaJogador.get(i).valorJogador() + "         |");
+        }
     }
 
     public boolean estourou(int valor) {

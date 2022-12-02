@@ -12,6 +12,18 @@ public class Computador extends Jogador {
         System.out.println("Computador iniciado");
     }
 
+
+    @Override
+    public void msg() {
+        super.msg();
+    }
+
+    @Override
+    public int valorJogador() {
+        return super.valorJogador();
+    }
+
+
     @Override
     public Cartas jogar(Baralho b1) {
         if (Escolha() == 1) {
@@ -25,16 +37,7 @@ public class Computador extends Jogador {
     @Override
     public int Escolha() {
         do {
-            System.out.println("--------------------");
-            System.out.println("|                  |");
-            System.out.println("|      Opções      |");
-            System.out.println("|                  |");
-            System.out.println("| 1- Comprar carta |");
-            System.out.println("|                  |");
-            System.out.println("| 2- Não comprar   |");
-            System.out.println("|                  |");
-            System.out.println("--------------------");
-
+            msg();
             if (valorJogador() <= 10) {
                 escolha = 1;
             } else {
