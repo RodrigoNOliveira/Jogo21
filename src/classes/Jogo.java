@@ -9,8 +9,8 @@ public class Jogo {
     private Baralho baralho;
     private Humano humano;
     private Cartas c;
-    boolean valida = true;
-    boolean valida1 = true;
+    private boolean valida = true;
+    private boolean valida1 = true;
 
     private Cartas c1;
     private int jogada = 0;
@@ -29,7 +29,6 @@ public class Jogo {
         System.out.println("|      JOGO 21     |");
         System.out.println("+------------------+");
         System.out.println();
-
         baralho.criaCartas();
         defineModo();
         for (int i = 0; i < listaJogador.size(); i++) {
@@ -38,8 +37,7 @@ public class Jogo {
                 listaJogador.get(i).getListaCartas().add(c);
             }
         }
-        while (jogar())
-            ;
+        while (jogar());
     }
 
     public void cadastroMultiplayer() {
@@ -59,6 +57,15 @@ public class Jogo {
     }
 
     public void cadastroIA() {
+        System.out.println();
+        System.out.println();
+        System.out.println("--------------------");
+        System.out.println("|                  |");
+        System.out.println("|    Versus I.A.   |");
+        System.out.println("|                  |");
+        System.out.println("|    Iniciando     |");
+        System.out.println("|                  |");
+        System.out.println("--------------------");
         humano = new Humano(1);
         this.listaJogador.add(humano);
         computador = new Computador(2);
@@ -187,7 +194,7 @@ public class Jogo {
 
     }
 
-    public void parteMsgResultJgd(int i){
+    public void parteMsgResultJgd(int i) {
         if (listaJogador.get(i).valorJogador() >= 10) {
             System.out.println("|    Soma: " + listaJogador.get(i).valorJogador() + "          |");
         } else {

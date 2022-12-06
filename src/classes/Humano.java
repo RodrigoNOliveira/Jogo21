@@ -17,6 +17,7 @@ public class Humano extends Jogador {
         return super.valorJogador();
     }
 
+    
     public Humano(int jogador) {
         super(jogador);
         System.out.println("\nJogador " + jogador + " iniciado");

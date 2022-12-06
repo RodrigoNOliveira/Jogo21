@@ -30,6 +30,10 @@ public abstract class Jogador {
         System.out.println("--------------------\n");
     }
 
+    public abstract Cartas jogar(Baralho b1);
+
+    public abstract int Escolha();
+
     public void setListaCartas(ArrayList<Cartas> listaCartas) {
         this.listaCartas = listaCartas;
     }
@@ -42,10 +46,6 @@ public abstract class Jogador {
         }
         return total;
     }
-
-    public abstract Cartas jogar(Baralho b1);
-
-    public abstract int Escolha();
 
     public int getJogador() {
         return jogador;
