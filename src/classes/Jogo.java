@@ -23,6 +23,9 @@ public class Jogo {
     }
 
     public void iniciar() {
+        int novamente = 0;
+        boolean verifica = true;
+        do{
         System.out.println();
         System.out.println();
         System.out.println("+------------------+");
@@ -38,6 +41,23 @@ public class Jogo {
             }
         }
         while (jogar());
+        
+        System.out.println("Deseja Jogar Novamente?(1-Sim - 2Não)");
+        do {
+            verifica = true;
+            try {
+                novamente = scanner.nextInt();
+                if (novamente != 1 && novamente != 2) {
+                    System.out.println("\nOpção invalida! Insira um dos valores apresentados na tela: ");
+                    verifica = false;
+                }
+            }catch (InputMismatchException e) {
+                System.out.println("\nOpção invalida! Insira um dos valores apresentados na tela: ");
+                scanner.nextLine();
+                verifica = false;
+            }
+        } while (verifica == false);
+        }while(novamente!=2);  
     }
 
     public void cadastroMultiplayer() {
